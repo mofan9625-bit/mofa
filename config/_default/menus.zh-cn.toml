@@ -16,6 +16,11 @@
   url = "/posts/"
   weight = 30
 
+[[main]]
+  name = "免责声明"
+  url = "/disclaimer/"
+  weight = 40
+
 # -- Footer Menu --
 # 底部页脚菜单
 
@@ -28,3 +33,8 @@
   name = "博客归档"
   url = "/posts/"
   weight = 20
+
+[[footer]]
+  name = "免责声明"
+  url = "/disclaimer/"
+  weight = 30
