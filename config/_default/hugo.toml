@@ -3,7 +3,7 @@
 # https://blowfish.page/docs/getting-started/
 
 theme = "blowfish"
-baseURL = "https://mofajichang.com/"
+baseURL = "https://mofaclashjichang.com/"
 title = "魔法博客"
 defaultContentLanguage = "zh-cn"
 disableLanguages = ["de", "en", "es", "fr", "it", "ja", "pt-br", "pt-pt"]
