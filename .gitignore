@@ -1,0 +1,15 @@
+# Hugo generated output
+/public/
+/resources/
+/.hugo_build.lock
+
+# Dependency and tooling caches
+node_modules/
+.cache/
+
+# Local/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+

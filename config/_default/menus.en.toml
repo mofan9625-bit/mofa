@@ -1,0 +1,25 @@
+# -- Main Menu --
+# Header navigation
+
+[[main]]
+  name = "Home"
+  url = "/"
+  weight = 10
+
+[[main]]
+  name = "Posts"
+  url = "/posts/"
+  weight = 20
+
+# -- Footer Menu --
+# Footer navigation
+
+[[footer]]
+  name = "Home"
+  url = "/"
+  weight = 10
+
+[[footer]]
+  name = "Posts"
+  url = "/posts/"
+  weight = 20

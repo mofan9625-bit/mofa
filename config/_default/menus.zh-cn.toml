@@ -1,0 +1,25 @@
+# -- Main Menu --
+# 顶部主导航菜单
+
+[[main]]
+  name = "首页"
+  url = "/"
+  weight = 10
+
+[[main]]
+  name = "博客归档"
+  url = "/posts/"
+  weight = 20
+
+# -- Footer Menu --
+# 底部页脚菜单
+
+[[footer]]
+  name = "首页"
+  url = "/"
+  weight = 10
+
+[[footer]]
+  name = "博客归档"
+  url = "/posts/"
+  weight = 20

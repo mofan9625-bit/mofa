@@ -1,0 +1,19 @@
+locale = "en"
+label = "English"
+weight = 2
+title = "Blowfish"
+
+[params]
+  displayName = "English"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "2 January 2006"
+  logo = "img/blowfish_logo_transparent.png"
+  description = "A powerful, lightweight theme for Hugo."
+
+[params.author]
+  name = "机场专线云"
+  image = ""
+  headline = "2026 稳定专线机场推荐与晚高峰测速"
+  bio = "2026 稳定专线机场推荐与晚高峰测速"
+  links = []

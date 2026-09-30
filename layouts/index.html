@@ -1,0 +1,13 @@
+{{ define "main" }}
+  {{ $partial := print "home/" .Site.Params.homepage.layout ".html" }}
+  {{ if templates.Exists ( printf "partials/%s" $partial ) }}
+    {{ partial $partial . }}
+  {{ else }}
+    {{ partial "home/profile.html" . }}
+  {{ end }}
+  {{ if .Site.Params.homepage.showRecent | default false }}
+    <section>
+      {{ partial "recent-articles/main.html" . }}
+    </section>
+  {{ end }}
+{{ end }}
