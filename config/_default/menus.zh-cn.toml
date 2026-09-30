@@ -7,9 +7,14 @@
   weight = 10
 
 [[main]]
+  name = "机场推荐"
+  url = "/airports/"
+  weight = 20
+
+[[main]]
   name = "博客归档"
   url = "/posts/"
-  weight = 20
+  weight = 30
 
 # -- Footer Menu --
 # 底部页脚菜单

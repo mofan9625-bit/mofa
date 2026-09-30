@@ -1,6 +1,6 @@
 ---
 title: "博客文章"
-description: "机场专线云所有文章与机场推荐测评"
+description: "mofa机场所有文章、机场推荐与使用教程。"
 sitemap:
   changefreq: "weekly"
   priority: 0.8

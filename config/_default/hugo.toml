@@ -4,7 +4,7 @@
 
 theme = "blowfish"
 baseURL = "https://mofaclashjichang.com/"
-title = "机场专线云 | 2026 稳定专线机场推荐与晚高峰测速"
+title = "mofa机场"
 defaultContentLanguage = "zh-cn"
 disableLanguages = ["de", "en", "es", "fr", "it", "ja", "pt-br", "pt-pt"]
 
