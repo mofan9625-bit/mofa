@@ -1,0 +1,177 @@
+<style>
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
+
+  @media (min-width: 720px) {
+    .tool-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .tool-card {
+    display: flex;
+    min-height: 17rem;
+    flex-direction: column;
+    border: 1px solid rgb(212 212 216 / 0.85);
+    border-radius: 1rem;
+    padding: 1.45rem;
+    background: rgb(255 255 255 / 0.8);
+    box-shadow: 0 12px 30px rgb(15 23 42 / 0.07);
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .dark .tool-card {
+    border-color: rgb(63 63 70 / 0.9);
+    background: rgb(24 24 27 / 0.82);
+    box-shadow: 0 12px 30px rgb(0 0 0 / 0.22);
+  }
+
+  .tool-card:hover {
+    transform: translateY(-3px);
+    border-color: rgb(16 185 129 / 0.75);
+    box-shadow: 0 18px 38px rgb(16 185 129 / 0.12);
+  }
+
+  .tool-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .tool-card-icon {
+    display: inline-flex;
+    width: 3.35rem;
+    height: 3.35rem;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.9rem;
+    background: rgb(255 255 255 / 0.95);
+    font-size: 1.55rem;
+    box-shadow: 0 7px 18px rgb(15 23 42 / 0.08);
+  }
+
+  .dark .tool-card-icon {
+    background: rgb(39 39 42 / 0.95);
+  }
+
+  .tool-card-title {
+    margin: 0;
+    color: #172033;
+    font-size: 1.22rem;
+    font-weight: 800;
+    line-height: 1.35;
+  }
+
+  .dark .tool-card-title {
+    color: #f8fafc;
+  }
+
+  .tool-card-description {
+    margin: 1rem 0 0;
+    color: #64748b;
+    font-size: 0.94rem;
+    line-height: 1.75;
+  }
+
+  .dark .tool-card-description {
+    color: #a1a1aa;
+  }
+
+  .tool-card-platforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 1.1rem;
+  }
+
+  .tool-card-platform {
+    border-radius: 0.45rem;
+    padding: 0.32rem 0.58rem;
+    background: #eef0f3;
+    color: #626975;
+    font-size: 0.75rem;
+    font-weight: 750;
+  }
+
+  .dark .tool-card-platform {
+    background: #303036;
+    color: #d4d4d8;
+  }
+
+  .tool-card-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+    margin-top: auto;
+    padding-top: 1.35rem;
+  }
+
+  .tool-card-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(212 212 216 / 0.9);
+    border-radius: 0.65rem;
+    padding: 0.7rem 0.65rem;
+    color: #334155;
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .tool-card-button--primary {
+    border-color: #168a5b;
+    background: #168a5b;
+    color: white;
+  }
+
+  .tool-card-button:hover {
+    color: #0f766e;
+  }
+
+  .tool-card-button--primary:hover {
+    color: white;
+    filter: brightness(1.08);
+  }
+
+  .dark .tool-card-button {
+    border-color: #52525b;
+    color: #e4e4e7;
+  }
+</style>
+
+{{- $tools := slice
+  (dict "name" "Clash Verge Rev" "icon" "🚀" "description" "基于 Tauri 的 Mihomo 图形客户端，适合桌面系统使用。" "platforms" (slice "Windows" "macOS" "Linux") "guide" "/posts/2026-clash-verge-rev-guide/" "download" "https://github.com/clash-verge-rev/clash-verge-rev/releases")
+  (dict "name" "Shadowrocket" "icon" "📱" "description" "Apple 平台的规则代理客户端，可导入订阅、配置规则并查看连接记录。" "platforms" (slice "iOS" "iPadOS") "guide" "/tools/shadowrocket/" "download" "https://apps.apple.com/us/app/shadowrocket/id932747118")
+  (dict "name" "v2rayN" "icon" "⚡" "description" "支持 Xray、sing-box 等核心的桌面图形客户端。" "platforms" (slice "Windows" "Linux" "macOS") "guide" "/tools/v2rayn/" "download" "https://github.com/2dust/v2rayN/releases")
+  (dict "name" "Clash Meta for Android" "icon" "🤖" "description" "使用 Clash.Meta 核心的 Android 图形客户端，支持配置文件和订阅导入。" "platforms" (slice "Android") "guide" "/tools/clash-meta-for-android/" "download" "https://github.com/MetaCubeX/ClashMetaForAndroid/releases")
+  (dict "name" "Karing" "icon" "✨" "description" "兼容 Clash、V2Ray、sing-box 等订阅格式的多平台客户端。" "platforms" (slice "iOS" "Android" "macOS" "Windows") "guide" "/tools/karing/" "download" "https://karing.app/download")
+  (dict "name" "v2rayNG" "icon" "🛡️" "description" "Android 平台的 V2Ray 客户端，支持 Xray 和 v2fly 核心。" "platforms" (slice "Android") "guide" "/tools/v2rayng/" "download" "https://github.com/2dust/v2rayNG/releases")
+-}}
+
+<div class="tool-grid not-prose" aria-label="代理工具使用教程">
+  {{- range $tools }}
+    <article class="tool-card">
+      <div class="tool-card-heading">
+        <span class="tool-card-icon" aria-hidden="true">{{ .icon }}</span>
+        <h2 class="tool-card-title">{{ .name }}</h2>
+      </div>
+      <p class="tool-card-description">{{ .description }}</p>
+      <div class="tool-card-platforms" aria-label="支持平台">
+        {{- range .platforms }}
+          <span class="tool-card-platform">{{ . }}</span>
+        {{- end }}
+      </div>
+      <div class="tool-card-actions">
+        <a class="tool-card-button tool-card-button--primary" href="{{ .guide }}">查看教程</a>
+        <a class="tool-card-button" href="{{ .download }}" target="_blank" rel="noopener noreferrer">官方下载 ↗</a>
+      </div>
+    </article>
+  {{- end }}
+</div>

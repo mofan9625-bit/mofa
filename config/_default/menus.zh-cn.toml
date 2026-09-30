@@ -17,9 +17,14 @@
   weight = 30
 
 [[main]]
+  name = "工具使用"
+  url = "/tools/"
+  weight = 40
+
+[[main]]
   name = "免责声明"
   url = "/disclaimer/"
-  weight = 40
+  weight = 50
 
 # -- Footer Menu --
 # 底部页脚菜单

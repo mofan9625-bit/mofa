@@ -6,6 +6,8 @@
 # Dependency and tooling caches
 node_modules/
 .cache/
+.hugo-preview-cache/
+.hugo-preview-*.log
 
 # Local/editor files
 .DS_Store

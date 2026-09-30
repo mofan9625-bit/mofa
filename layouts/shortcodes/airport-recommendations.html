@@ -1,0 +1,256 @@
+<style>
+  .airport-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  @media (min-width: 640px) {
+    .airport-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .airport-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .airport-card {
+    position: relative;
+    display: flex;
+    min-height: 18rem;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgb(212 212 216 / 0.8);
+    border-radius: 1.25rem;
+    background: rgb(255 255 255 / 0.78);
+    box-shadow: 0 14px 35px rgb(15 23 42 / 0.08);
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .dark .airport-card {
+    border-color: rgb(63 63 70 / 0.85);
+    background: rgb(24 24 27 / 0.78);
+    box-shadow: 0 14px 35px rgb(0 0 0 / 0.2);
+  }
+
+  .airport-card:hover {
+    transform: translateY(-3px);
+    border-color: rgb(59 130 246 / 0.75);
+    box-shadow: 0 18px 40px rgb(37 99 235 / 0.14);
+  }
+
+  .airport-rank {
+    position: absolute;
+    top: 0.85rem;
+    left: 0.85rem;
+    z-index: 1;
+    display: inline-flex;
+    height: 2rem;
+    min-width: 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 0 0.65rem;
+    background: linear-gradient(135deg, #38bdf8, #2563eb);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    box-shadow: 0 7px 18px rgb(37 99 235 / 0.28);
+  }
+
+  .airport-visual {
+    display: flex;
+    height: 12rem;
+    align-items: center;
+    justify-content: center;
+    padding: 2.6rem 2rem 1.15rem;
+    background:
+      radial-gradient(circle at 50% 20%, rgb(56 189 248 / 0.16), transparent 55%),
+      linear-gradient(145deg, rgb(239 246 255 / 0.75), rgb(255 255 255 / 0));
+  }
+
+  .dark .airport-visual {
+    background:
+      radial-gradient(circle at 50% 20%, rgb(56 189 248 / 0.18), transparent 55%),
+      linear-gradient(145deg, rgb(30 58 138 / 0.22), rgb(15 23 42 / 0));
+  }
+
+  .airport-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 18px rgb(37 99 235 / 0.2));
+  }
+
+  .airport-lettermark {
+    display: flex;
+    width: 6.5rem;
+    height: 6.5rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(96 165 250 / 0.4);
+    border-radius: 1.75rem;
+    background: linear-gradient(145deg, #38bdf8, #1d4ed8);
+    color: white;
+    font-size: 1.65rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    box-shadow: 0 16px 30px rgb(37 99 235 / 0.25);
+  }
+
+  .airport-card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 0.35rem 1.35rem 1.35rem;
+    text-align: center;
+  }
+
+  .airport-card-title {
+    margin: 0;
+    color: #111827;
+    font-size: 1.35rem;
+    font-weight: 850;
+    letter-spacing: -0.02em;
+  }
+
+  .dark .airport-card-title {
+    color: #f8fafc;
+  }
+
+  .airport-card-note {
+    margin: 0.55rem 0 0;
+    color: #64748b;
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .dark .airport-card-note {
+    color: #a1a1aa;
+  }
+
+  .airport-card-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin-top: 1rem;
+    border-radius: 999px;
+    padding: 0.55rem 1rem;
+    background: linear-gradient(135deg, #38bdf8, #2563eb);
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 750;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgb(37 99 235 / 0.2);
+  }
+
+  .airport-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem;
+    margin-top: 1rem;
+  }
+
+  .airport-card-actions .airport-card-link {
+    margin-top: 0;
+  }
+
+  .airport-card-link--official {
+    border: 1px solid rgb(37 99 235 / 0.45);
+    background: transparent;
+    color: #2563eb;
+    box-shadow: none;
+  }
+
+  .dark .airport-card-link--official {
+    border-color: rgb(96 165 250 / 0.65);
+    color: #60a5fa;
+  }
+
+  .airport-card-link:hover {
+    color: #fff;
+    filter: brightness(1.08);
+  }
+
+  .airport-card-link--official:hover {
+    background: rgb(37 99 235 / 0.1);
+    color: #1d4ed8;
+  }
+
+  .dark .airport-card-link--official:hover {
+    background: rgb(96 165 250 / 0.12);
+    color: #93c5fd;
+  }
+</style>
+
+{{- $airports := slice
+  (dict "rank" "01" "name" "云界线" "mark" "云界" "logo" "/images/airports/yunjiexian-logo.png")
+  (dict "rank" "02" "name" "大佬云" "mark" "大佬" "logo" "/images/airports/dalaoyun-logo.png")
+  (dict "rank" "03" "name" "环球梯" "mark" "环球" "logo" "/images/airports/huanqiuti-logo.png")
+  (dict "rank" "04" "name" "榴莲云" "mark" "榴莲" "logo" "/images/airports/liulianyun-logo.png")
+  (dict "rank" "05" "name" "神行加速" "mark" "神行" "logo" "")
+  (dict "rank" "06" "name" "闪电鼠" "mark" "闪电" "logo" "/images/airports/shandianshu-logo.webp")
+-}}
+
+<div class="airport-grid not-prose" aria-label="机场推荐列表">
+  {{- range $airports }}
+    <article class="airport-card">
+      <span class="airport-rank">TOP {{ .rank }}</span>
+      <div class="airport-visual">
+        {{- if .logo }}
+          <img class="airport-logo" src="{{ .logo }}" alt="{{ .name }} Logo" loading="lazy" decoding="async">
+        {{- else }}
+          <div class="airport-lettermark" aria-hidden="true">{{ .mark }}</div>
+        {{- end }}
+      </div>
+      <div class="airport-card-body">
+        <h2 class="airport-card-title">{{ .name }}</h2>
+        {{- if eq .name "云界线" }}
+          <p class="airport-card-note">套餐价格、节点测速和适用人群分析。</p>
+          <div class="airport-card-actions">
+            <a class="airport-card-link" href="/airports/yunjiexian/">查看价格与测评 →</a>
+            <a class="airport-card-link airport-card-link--official" href="https://9625mofan01.yunjiexianaff.com/#/?code=OOYhSj0L" target="_blank" rel="sponsored noopener noreferrer">直达官网 ↗</a>
+          </div>
+        {{- else if eq .name "大佬云" }}
+          <p class="airport-card-note">套餐价格、流量配置和适用人群分析。</p>
+          <div class="airport-card-actions">
+            <a class="airport-card-link" href="/airports/dalaoyun/">查看套餐分析 →</a>
+            <a class="airport-card-link airport-card-link--official" href="https://mofanvip01.dalaoyunaff.com/#/?code=QT2rqp5V" target="_blank" rel="sponsored noopener noreferrer">直达官网 ↗</a>
+          </div>
+        {{- else if eq .name "环球梯" }}
+          <p class="airport-card-note">套餐价格、设备数量和适用人群分析。</p>
+          <div class="airport-card-actions">
+            <a class="airport-card-link" href="/airports/huanqiuti/">查看套餐分析 →</a>
+            <a class="airport-card-link airport-card-link--official" href="https://mofanvip01.huanqiutiaff.com/#/?code=l7oLmjVU" target="_blank" rel="sponsored noopener noreferrer">直达官网 ↗</a>
+          </div>
+        {{- else if eq .name "榴莲云" }}
+          <p class="airport-card-note">套餐价格、流量配置和适用人群分析。</p>
+          <div class="airport-card-actions">
+            <a class="airport-card-link" href="/airports/liulianyun/">查看套餐分析 →</a>
+            <a class="airport-card-link airport-card-link--official" href="https://mofan88.liulianyunaff.com/#/?code=ETsQBSuR" target="_blank" rel="sponsored noopener noreferrer">直达官网 ↗</a>
+          </div>
+        {{- else if eq .name "神行加速" }}
+          <p class="airport-card-note">推荐资料与详细测评将持续补充。</p>
+          <div class="airport-card-actions">
+            <a class="airport-card-link airport-card-link--official" href="https://vipmofan01.shenxingaff.com/#/?code=nn4ohwnK" target="_blank" rel="sponsored noopener noreferrer">直达官网 ↗</a>
+          </div>
+        {{- else if eq .name "闪电鼠" }}
+          <p class="airport-card-note">套餐价格、流量配置和适用人群分析。</p>
+          <div class="airport-card-actions">
+            <a class="airport-card-link" href="/airports/shandianshu/">查看套餐分析 →</a>
+            <a class="airport-card-link airport-card-link--official" href="https://mofanvip01.shandianshuaff.com/#/?code=a3GAQAXg" target="_blank" rel="sponsored noopener noreferrer">直达官网 ↗</a>
+          </div>
+        {{- else }}
+          <p class="airport-card-note">推荐资料与详细测评将持续补充。</p>
+        {{- end }}
+      </div>
+    </article>
+  {{- end }}
+</div>
